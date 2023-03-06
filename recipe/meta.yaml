@@ -1,5 +1,5 @@
 {% set name = "smp" %}
-{% set version = "0.1.4" %}
+{% set version = "0.1.5" %}
 
 package:
   name: {{ name }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/IntelPython/smp/archive/v{{ version }}.tar.gz
-  sha256: 66fbf6e70a9bdfefadd7d3e98dd3415990d81d629ae333055afeeaabdf3c0761
+  sha256: 15e5c80392c43696eb1f8785d153e0f9751a0da127e7c66a262fef10be413d45
 
 build:
   number: 0
   noarch: python
   entry_points:
     - python-smp = smp:_main
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
