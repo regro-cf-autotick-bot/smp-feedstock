@@ -10,20 +10,22 @@ source:
   sha256: 66fbf6e70a9bdfefadd7d3e98dd3415990d81d629ae333055afeeaabdf3c0761
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - python-smp = smp:_main
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
   run:
-    - python
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - SMP
     - smp
